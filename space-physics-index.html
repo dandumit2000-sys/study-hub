@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>IGCSE Space Physics Revision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--card:#fff;--card-hover:#f5f5f4;--border:#e7e5e4;--text:#1a1a1a;--text2:#57534e;--text3:#a8a29e;--accent:#6366f1;--accent-bg:#eef2ff;--green:#34d399;--green-bg:#d1fae5;--green-text:#065f46;--red:#f87171;--red-bg:#fee2e2;--red-text:#991b1b;--amber:#fbbf24;--amber-bg:#fef3c7;--amber-text:#92400e}
+@media(prefers-color-scheme:dark){:root{--bg:#0d0d0d;--card:#1a1a1a;--card-hover:#222;--border:#2a2a2a;--text:#e5e5e5;--text2:#999;--text3:#666;--accent:#818cf8;--accent-bg:#1e1b4b;--green-bg:#064e3b;--green-text:#a7f3d0;--red-bg:#450a0a;--red-text:#fca5a5;--amber-bg:#451a03;--amber-text:#fde68a}}
+body{background:var(--bg);color:var(--text);font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px 60px}
+.mono{font-family:'JetBrains Mono',monospace}
+.header{padding:28px 0 20px;border-bottom:1px solid var(--border);margin-bottom:28px}
+.badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+h1{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:8px}
+.subtitle{font-size:14px;color:var(--text3);margin-top:6px}
+.progress{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:16px}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .4s ease}
+.cat-label{font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:24px 0 10px}
+.cat-label:first-of-type{margin-top:0}
+.topic-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:8px}
+.topic-name{font-size:15px;font-weight:600;margin-bottom:2px}
+.topic-detail{font-size:13px;color:var(--text3);margin-bottom:12px}
+.rating-row{display:flex;gap:6px;flex-wrap:wrap}
+.rating-btn{padding:8px 14px;border-radius:8px;border:1.5px solid var(--border);background:transparent;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;white-space:nowrap;-webkit-tap-highlight-color:transparent;color:var(--text2);transition:all .15s}
+.rating-btn:active{transform:scale(.95)}
+.summary-box{margin-top:28px;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:14px}
+.summary-title{font-weight:600;font-size:16px;margin-bottom:12px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:14px;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);color:var(--text);font-size:15px;font-weight:500;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;transition:all .2s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.primary:active{opacity:.85}
+.btn:disabled{opacity:.3;pointer-events:none}
+.nav-dots{display:flex;gap:6px;justify-content:center;margin:0 0 20px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;cursor:pointer;padding:0;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.dot.active{background:var(--accent);width:24px;border-radius:4px}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
+.review-meta{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.review-topic{font-size:20px;font-weight:700;margin-bottom:4px}
+.review-cat{font-size:14px;color:var(--text3);margin-bottom:20px}
+.key-point{padding:12px 16px;background:var(--card-hover);border-radius:10px;margin-bottom:6px;font-size:15px;line-height:1.6;color:var(--text)}
+.key-num{color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;margin-right:8px}
+.review-nav{display:flex;justify-content:space-between;margin-top:24px;gap:8px}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-size:14px}
+.quiz-q{margin-bottom:24px}
+.q-label{font-size:14px;font-weight:600;color:var(--accent);font-family:'JetBrains Mono',monospace;margin-bottom:4px}
+.q-text{font-size:16px;font-weight:500;margin-bottom:12px}
+.options{display:flex;flex-direction:column;gap:6px}
+.option{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);cursor:pointer;font-size:15px;font-family:inherit;width:100%;text-align:left;-webkit-tap-highlight-color:transparent;color:var(--text);transition:all .15s}
+.option:active{transform:scale(.98)}
+.option.selected{border-color:var(--accent);background:var(--accent-bg)}
+.option.correct{border-color:var(--green);background:var(--green-bg);color:var(--green-text)}
+.option.incorrect{border-color:var(--red);background:var(--red-bg);color:var(--red-text)}
+.option.was-correct{border-color:var(--green);background:var(--green-bg);color:var(--green-text)}
+.option:disabled{cursor:default}
+.option:disabled:active{transform:none}
+.letter{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+.exp-toggle{margin-top:8px;background:none;border:none;color:var(--accent);font-size:13px;font-weight:500;cursor:pointer;padding:0;font-family:inherit}
+.exp-box{margin-top:10px;padding:12px 16px;border-radius:10px;background:var(--accent-bg);font-size:14px;line-height:1.6;color:var(--text2)}
+.quiz-nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:16px}
+.results-circle{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 24px}
+.results-score{font-size:36px;font-weight:700}
+.results-total{font-size:13px;color:var(--text3)}
+.results-title{font-size:20px;font-weight:700;margin-bottom:4px}
+.results-pct{font-size:15px;color:var(--text2);margin-bottom:28px}
+.breakdown-label{font-size:14px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;text-align:left}
+.breakdown-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.breakdown-name{flex:1;font-size:14px;font-weight:500}
+.breakdown-bar{width:60px;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.breakdown-fill{height:100%;border-radius:2px}
+.breakdown-score{font-size:13px;font-weight:600;color:var(--text2);min-width:40px;text-align:right}
+.results-actions{display:flex;gap:8px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="header">
+    <div>
+      <span class="badge" style="background:var(--accent-bg);color:var(--accent)">IGCSE Physics</span>
+      <span class="badge" style="background:var(--card-hover);color:var(--text3);margin-left:6px">Section 7</span>
+    </div>
+    <h1>Space physics revision</h1>
+    <p class="subtitle" id="subtitle">Step 1 of 3 — Rate your confidence on each topic</p>
+    <div class="progress"><div class="progress-fill" id="progress" style="width:15%"></div></div>
+  </div>
+
+  <div id="phase-diagnostic"></div>
+  <div id="phase-review" class="hidden"></div>
+  <div id="phase-quiz" class="hidden"></div>
+  <div id="phase-results" class="hidden"></div>
+</div>
+
+<script>
+const TOPICS=[{id:"solar_system",category:"The Solar System",name:"Order & features of planets",detail:"Terrestrial vs gas giants, dwarf planets",review:{key_points:["The eight planets in order from the Sun: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune. (My Very Educated Mother Just Served Us Nachos)","The inner four (Mercury\u2013Mars) are terrestrial (rocky, small, dense). The outer four (Jupiter\u2013Neptune) are gas/ice giants (large, low density, many moons).","Pluto was reclassified as a dwarf planet in 2006 \u2014 it hasn\u2019t cleared its orbital neighbourhood.","The asteroid belt sits between Mars and Jupiter. The Kuiper Belt lies beyond Neptune."]}},{id:"orbits",category:"The Solar System",name:"Orbital motion",detail:"Elliptical orbits, gravity as centripetal force",review:{key_points:["Planets orbit the Sun in ellipses (slightly squashed circles), not perfect circles.","Gravity provides the centripetal force that keeps planets in orbit \u2014 it pulls them toward the Sun.","Closer planets orbit faster (shorter orbital period). Mercury: 88 days. Neptune: 165 years.","Satellites (natural or artificial) orbit planets the same way \u2014 gravity = centripetal force.","An object in orbit is in constant free fall toward the body it orbits, but its forward velocity keeps it missing."]}},{id:"comets",category:"The Solar System",name:"Comets & asteroids",detail:"Composition, orbits, tails",review:{key_points:["Comets are made of ice, dust, and rock \u2014 often called \u2018dirty snowballs\u2019.","They have highly elliptical orbits that take them close to the Sun and far out beyond Neptune.","As a comet approaches the Sun, ice vaporises forming a coma (cloud) and two tails: a dust tail and an ion tail.","The ion tail always points away from the Sun (pushed by solar wind), regardless of the comet\u2019s direction of travel.","Asteroids are rocky/metallic bodies, mostly found in the asteroid belt between Mars and Jupiter."]}},{id:"sun_energy",category:"Stars",name:"Energy source of stars",detail:"Hydrogen fusion \u2192 helium, E=mc\u00b2",review:{key_points:["Stars produce energy by nuclear fusion: hydrogen nuclei fuse to form helium in the core.","This requires extreme temperature (~15 million \u00b0C) and pressure to overcome electrostatic repulsion between protons.","A tiny amount of mass is converted to energy each reaction, described by E = mc\u00b2.","Because c\u00b2 is enormous (9 \u00d7 10\u00b9\u2076), even a small mass loss releases a huge amount of energy.","The Sun converts about 4 million tonnes of mass into energy every second \u2014 and has enough hydrogen for another ~5 billion years."]}},{id:"star_lifecycle",category:"Stars",name:"Life cycle of a star",detail:"Protostar \u2192 main sequence \u2192 red giant \u2192 end stages",review:{key_points:["All stars begin as a nebula (cloud of gas and dust) that collapses under gravity to form a protostar.","When the core is hot enough for fusion to begin, it becomes a main sequence star. Our Sun is here now.","For a Sun-sized star: main sequence \u2192 red giant \u2192 planetary nebula \u2192 white dwarf.","For a massive star (much bigger than the Sun): main sequence \u2192 red supergiant \u2192 supernova \u2192 neutron star or black hole.","The key factor determining a star\u2019s fate is its mass. More massive = shorter life, more dramatic death.","A supernova explosion scatters heavy elements into space, which become part of new stars and planets."]}},{id:"hr_diagram",category:"Stars",name:"H-R diagram",detail:"Axes, main sequence, giants, white dwarfs",review:{key_points:["The Hertzsprung-Russell diagram plots luminosity (y-axis, increasing upward) against temperature (x-axis, decreasing left to right \u2014 hot on the left!).","The main sequence is a diagonal band from top-left (hot, bright, blue) to bottom-right (cool, dim, red). Most stars sit here.","Red giants and supergiants are in the top-right: cool but very luminous (because they\u2019re huge).","White dwarfs are in the bottom-left: hot but very dim (because they\u2019re tiny).","The Sun is a medium main sequence star \u2014 roughly in the middle.","A star moves off the main sequence when it exhausts its hydrogen fuel."]}},{id:"galaxy",category:"The Universe",name:"Galaxies & the Milky Way",detail:"Types of galaxies, our position",review:{key_points:["A galaxy is a collection of billions of stars, gas, and dust held together by gravity.","The Milky Way is our galaxy \u2014 a barred spiral galaxy about 100,000 light-years across.","Our Solar System is located about two-thirds of the way out from the centre, in one of the spiral arms.","Three main galaxy types: spiral (like ours), elliptical (round/oval, older stars), and irregular (no clear shape).","The observable universe contains hundreds of billions of galaxies."]}},{id:"redshift",category:"The Universe",name:"Redshift & expanding universe",detail:"Doppler effect, recession speed vs distance",review:{key_points:["Light from distant galaxies is shifted toward the red end of the spectrum \u2014 this is redshift.","Redshift happens because galaxies are moving away from us (the Doppler effect for light).","The further away a galaxy is, the greater its redshift \u2014 meaning it\u2019s moving away faster.","This relationship (speed \u221d distance) is Hubble\u2019s Law. It means the universe is expanding.","It\u2019s not that galaxies fly through space \u2014 space itself is stretching, carrying galaxies apart.","Blueshift would mean something is moving toward us (e.g. the Andromeda galaxy)."]}},{id:"big_bang",category:"The Universe",name:"Big Bang evidence",detail:"CMB radiation, redshift of galaxies",review:{key_points:["The Big Bang theory states the universe began from an extremely hot, dense point about 13.8 billion years ago and has been expanding ever since.","Two key pieces of evidence: (1) redshift of galaxies showing expansion, and (2) cosmic microwave background radiation.","If the universe is expanding now, running time backwards means everything was once in the same place.","The Big Bang was not an explosion IN space \u2014 it was the rapid expansion OF space itself.","Light elements (hydrogen and helium) formed in the first few minutes. Heavier elements came from stars much later."]}},{id:"cmb",category:"The Universe",name:"Cosmic microwave background",detail:"What it is, why it supports Big Bang",review:{key_points:["The CMB is faint microwave radiation detectable from every direction in space.","It\u2019s the \u2018afterglow\u2019 of the Big Bang \u2014 radiation from when the universe first became cool enough for light to travel freely (~380,000 years after the Big Bang).","Originally this was very high-energy radiation, but the expansion of the universe has stretched it into microwaves.","The CMB was discovered accidentally by Penzias and Wilson in 1965.","It\u2019s almost perfectly uniform in all directions, which strongly supports a hot, dense origin (Big Bang).","Tiny variations in the CMB map the seeds of galaxies and large-scale structure."]}}];
+
+const QUESTIONS=[{id:1,topic:"solar_system",q:"Which planet has the shortest orbital period?",options:["Venus","Mercury","Mars","Earth"],answer:1,explanation:"Mercury is closest to the Sun, so it has the shortest orbital period (88 Earth days)."},{id:2,topic:"solar_system",q:"What distinguishes terrestrial planets from gas giants?",options:["Terrestrial planets have rings","Gas giants are closer to the Sun","Terrestrial planets are small, rocky, and dense","Gas giants have no moons"],answer:2,explanation:"Terrestrial planets (Mercury, Venus, Earth, Mars) are small, rocky, and dense. Gas giants are large with low density."},{id:3,topic:"solar_system",q:"Why is Pluto classified as a dwarf planet?",options:["It\u2019s too hot","It hasn\u2019t cleared its orbital neighbourhood","It has no atmosphere","It doesn\u2019t orbit the Sun"],answer:1,explanation:"Pluto hasn\u2019t cleared other objects from its orbital path, which is one of the three criteria for full planet status."},{id:4,topic:"orbits",q:"What force keeps a planet in orbit around the Sun?",options:["Magnetic force","Friction","Gravitational force","Nuclear force"],answer:2,explanation:"Gravity acts as the centripetal force, continuously pulling the planet toward the Sun and curving its path into an orbit."},{id:5,topic:"orbits",q:"What shape are planetary orbits?",options:["Perfect circles","Parabolas","Ellipses","Straight lines"],answer:2,explanation:"Planetary orbits are ellipses (slightly squashed circles). Kepler established this in the 17th century."},{id:6,topic:"orbits",q:"A satellite in orbit is best described as:",options:["Stationary in space","Being pushed by rocket engines","Continuously falling toward Earth but moving forward fast enough to keep missing it","Floating with no forces acting on it"],answer:2,explanation:"An orbiting satellite is in constant free fall \u2014 gravity pulls it toward Earth, but its tangential velocity means it keeps missing the surface."},{id:7,topic:"comets",q:"A comet\u2019s ion tail always points:",options:["Toward the Sun","Along the comet\u2019s path","Away from the Sun","Toward Earth"],answer:2,explanation:"Solar wind pushes the ion tail directly away from the Sun, regardless of the comet\u2019s direction of travel."},{id:8,topic:"comets",q:"What are comets primarily made of?",options:["Pure metal","Ice, dust, and rock","Liquid water","Hydrogen gas"],answer:1,explanation:"Comets are often called \u2018dirty snowballs\u2019 \u2014 they consist of ice, dust, and rocky material."},{id:9,topic:"sun_energy",q:"What nuclear process powers the Sun?",options:["Nuclear fission","Nuclear fusion","Radioactive decay","Chemical combustion"],answer:1,explanation:"The Sun is powered by nuclear fusion \u2014 hydrogen nuclei fuse into helium, releasing energy."},{id:10,topic:"sun_energy",q:"In E = mc\u00b2, why does a small mass produce enormous energy?",options:["Because m is always very large","Because c\u00b2 (speed of light squared) is enormous","Because E is always small","Because fusion is 100% efficient"],answer:1,explanation:"c = 3 \u00d7 10\u2078 m/s, so c\u00b2 = 9 \u00d7 10\u00b9\u2076. Even a tiny mass converted gives huge energy."},{id:11,topic:"star_lifecycle",q:"What determines whether a star ends as a white dwarf or a black hole?",options:["Its colour","Its temperature","Its mass","Its distance from Earth"],answer:2,explanation:"Mass is the key factor. Sun-like stars become white dwarfs. Much more massive stars can collapse into neutron stars or black holes."},{id:12,topic:"star_lifecycle",q:"Place these in order for a Sun-like star: (1) Red giant (2) White dwarf (3) Main sequence (4) Protostar (5) Planetary nebula",options:["4, 3, 1, 5, 2","3, 4, 1, 2, 5","4, 1, 3, 5, 2","1, 4, 3, 5, 2"],answer:0,explanation:"Protostar \u2192 Main sequence \u2192 Red giant \u2192 Planetary nebula \u2192 White dwarf."},{id:13,topic:"star_lifecycle",q:"A supernova occurs at the end of the life of:",options:["Any star","Only the Sun","A massive star (much larger than the Sun)","A white dwarf only"],answer:2,explanation:"Only massive stars end in a supernova. Sun-like stars shed their outer layers gently as a planetary nebula."},{id:14,topic:"hr_diagram",q:"On an H-R diagram, temperature increases in which direction?",options:["Left to right","Right to left","Bottom to top","Top to bottom"],answer:1,explanation:"This is a classic catch \u2014 on the H-R diagram, temperature increases from right to LEFT. Hot blue stars are on the left."},{id:15,topic:"hr_diagram",q:"Where are red giants located on the H-R diagram?",options:["Bottom-left","Top-left","Top-right","Bottom-right"],answer:2,explanation:"Red giants are cool (so on the right) but very luminous (so at the top) = top-right."},{id:16,topic:"hr_diagram",q:"A star in the bottom-left of the H-R diagram is:",options:["A red giant","A main sequence star","A white dwarf","A supergiant"],answer:2,explanation:"Bottom-left = hot but dim. That\u2019s a white dwarf \u2014 small size means low luminosity despite high temperature."},{id:17,topic:"galaxy",q:"What type of galaxy is the Milky Way?",options:["Elliptical","Irregular","Barred spiral","Ring"],answer:2,explanation:"The Milky Way is a barred spiral galaxy, approximately 100,000 light-years across."},{id:18,topic:"galaxy",q:"Where is our Solar System located in the Milky Way?",options:["At the exact centre","About two-thirds of the way out from the centre","At the very edge","Above the disc"],answer:1,explanation:"Our Solar System sits in one of the spiral arms, roughly two-thirds out from the galactic centre."},{id:19,topic:"redshift",q:"What does redshift of a galaxy\u2019s light indicate?",options:["The galaxy is getting hotter","The galaxy is moving toward us","The galaxy is moving away from us","The galaxy is shrinking"],answer:2,explanation:"Redshift means the wavelength of light has been stretched \u2014 this happens when the source is moving away from the observer (Doppler effect)."},{id:20,topic:"redshift",q:"According to Hubble\u2019s Law, a galaxy twice as far away will:",options:["Move at the same speed","Move at half the speed","Move at twice the speed","Not be moving"],answer:2,explanation:"Hubble\u2019s Law: recession speed is proportional to distance. Double the distance = double the speed."},{id:21,topic:"redshift",q:"The expansion of the universe means:",options:["Galaxies are flying through space","Space itself is stretching","Only our galaxy is moving","Light is slowing down"],answer:1,explanation:"It\u2019s space itself that is expanding, carrying galaxies with it \u2014 galaxies aren\u2019t moving through a static space."},{id:22,topic:"big_bang",q:"Which TWO observations are the main evidence for the Big Bang?",options:["Gravity and magnetism","Redshift of galaxies and CMB radiation","Tides and seasons","Dark matter and dark energy"],answer:1,explanation:"The two key pieces of evidence: (1) redshift showing the universe is expanding, and (2) cosmic microwave background radiation."},{id:23,topic:"big_bang",q:"The Big Bang was:",options:["An explosion in space","The rapid expansion of space itself","A collision between galaxies","The birth of the Sun"],answer:1,explanation:"The Big Bang was not an explosion IN existing space \u2014 it was the rapid expansion OF space itself from an extremely hot, dense state."},{id:24,topic:"cmb",q:"The cosmic microwave background radiation is:",options:["Light from the Sun","Radiation from mobile phones","Faint microwave radiation detectable from every direction in space","X-rays from black holes"],answer:2,explanation:"The CMB is the \u2018afterglow\u2019 of the Big Bang \u2014 microwave radiation coming uniformly from all directions."},{id:25,topic:"cmb",q:"Why is the CMB now in the microwave part of the spectrum, not visible light?",options:["It was always microwave radiation","The expansion of the universe has stretched the wavelength","Dust absorbed the visible light","It reflected off planets"],answer:1,explanation:"Originally very high-energy, the radiation has been stretched (redshifted) by the expansion of space over 13.8 billion years into microwaves."},{id:26,topic:"cmb",q:"Who discovered the CMB accidentally?",options:["Hubble and Lema\u00eetre","Newton and Einstein","Penzias and Wilson","Hawking and Penrose"],answer:2,explanation:"Arno Penzias and Robert Wilson discovered the CMB in 1965 while working on a radio antenna at Bell Labs."},{id:27,topic:"sun_energy",q:"Approximately how old is the Sun, and how much longer will it last on the main sequence?",options:["1 billion years old, 1 billion more","4.6 billion years old, about 5 billion more","10 billion years old, almost done","100 million years old, 10 billion more"],answer:1,explanation:"The Sun is about 4.6 billion years old and has roughly 5 billion years of hydrogen fuel remaining."},{id:28,topic:"star_lifecycle",q:"Where do elements heavier than helium come from?",options:["The Big Bang","Nuclear fusion in stars and supernovae","Chemical reactions in space","Dark matter"],answer:1,explanation:"Heavy elements are forged by nuclear fusion inside massive stars and scattered into space by supernovae."},{id:29,topic:"orbits",q:"Why do closer planets orbit the Sun faster than distant ones?",options:["They are lighter","Gravitational field is stronger closer to the Sun","They have more fuel","Solar wind pushes them"],answer:1,explanation:"Closer to the Sun, gravitational pull is stronger, so the planet needs higher orbital speed."},{id:30,topic:"redshift",q:"If a galaxy showed blueshift, what would this mean?",options:["It\u2019s very old","It\u2019s moving toward us","It\u2019s expanding","It\u2019s very hot"],answer:1,explanation:"Blueshift means the wavelength is compressed \u2014 the galaxy is moving toward us. The Andromeda galaxy shows blueshift."}];
+
+let state={phase:"diagnostic",ratings:{},reviewTopics:[],reviewIndex:0,quizQuestions:[],quizAnswers:{},quizSubmitted:false,quizPage:0,showExp:{}};
+const PER_PAGE=5;
+const $=id=>document.getElementById(id);
+
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+
+function setPhase(p){
+  state.phase=p;
+  ["diagnostic","review","quiz","results"].forEach(x=>{
+    $("phase-"+x).classList.toggle("hidden",x!==p);
+  });
+  const sub=$("subtitle"),prog=$("progress");
+  if(p==="diagnostic"){sub.textContent="Step 1 of 3 \u2014 Rate your confidence on each topic";prog.style.width="15%"}
+  if(p==="review"){const n=state.reviewTopics.length;sub.textContent=`Step 2 of 3 \u2014 Review ${n} topic${n!==1?"s":""} that need attention`;prog.style.width="50%"}
+  if(p==="quiz"){sub.textContent="Step 3 of 3 \u2014 30 exam-style questions";prog.style.width="80%"}
+  if(p==="results"){sub.textContent="Done \u2014 Here\u2019s how you did";prog.style.width="100%"}
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderDiagnostic(){
+  const el=$("phase-diagnostic");
+  let html="";let cat="";
+  TOPICS.forEach(t=>{
+    if(t.category!==cat){cat=t.category;html+=`<p class="cat-label">${cat}</p>`}
+    html+=`<div class="topic-card"><p class="topic-name">${t.name}</p><p class="topic-detail">${t.detail}</p><div class="rating-row" id="rate-${t.id}">`;
+    [{l:"Don\u2019t remember",v:0,bg:"var(--red-bg)",c:"var(--red-text)",ab:"var(--red)"},{l:"Shaky",v:1,bg:"var(--amber-bg)",c:"var(--amber-text)",ab:"var(--amber)"},{l:"Know it well",v:2,bg:"var(--green-bg)",c:"var(--green-text)",ab:"var(--green)"}].forEach(r=>{
+      html+=`<button class="rating-btn" data-topic="${t.id}" data-value="${r.v}" data-bg="${r.bg}" data-color="${r.c}" data-ab="${r.ab}">${r.l}</button>`;
+    });
+    html+=`</div></div>`;
+  });
+  html+=`<div id="diag-summary" class="summary-box hidden"></div>`;
+  el.innerHTML=html;
+  el.addEventListener("click",e=>{
+    const btn=e.target.closest(".rating-btn");
+    if(!btn)return;
+    const tid=btn.dataset.topic,val=parseInt(btn.dataset.value);
+    state.ratings[tid]=val;
+    const row=document.getElementById("rate-"+tid);
+    row.querySelectorAll(".rating-btn").forEach(b=>{b.style.background="";b.style.color="";b.style.borderColor=""});
+    btn.style.background=btn.dataset.bg;btn.style.color=btn.dataset.color;btn.style.borderColor="transparent";
+    checkDiagComplete();
+  });
+}
+
+function checkDiagComplete(){
+  if(Object.keys(state.ratings).length<TOPICS.length)return;
+  const weak=Object.values(state.ratings).filter(v=>v===0).length;
+  const shaky=Object.values(state.ratings).filter(v=>v===1).length;
+  const strong=Object.values(state.ratings).filter(v=>v===2).length;
+  state.reviewTopics=TOPICS.filter(t=>state.ratings[t.id]===0||state.ratings[t.id]===1).sort((a,b)=>(state.ratings[a.id]||0)-(state.ratings[b.id]||0));
+
+  let pills="";
+  if(weak>0)pills+=`<span class="pill" style="background:var(--red-bg);color:var(--red-text)">${weak} need review</span>`;
+  if(shaky>0)pills+=`<span class="pill" style="background:var(--amber-bg);color:var(--amber-text)">${shaky} shaky</span>`;
+  pills+=`<span class="pill" style="background:var(--green-bg);color:var(--green-text)">${strong} confident</span>`;
+
+  const hasReview=state.reviewTopics.length>0;
+  const box=$("diag-summary");
+  box.classList.remove("hidden");
+  box.innerHTML=`<p class="summary-title">Your diagnostic</p><div class="pills">${pills}</div>`+(hasReview?`<button class="btn primary" id="start-review">Start review (${state.reviewTopics.length} topic${state.reviewTopics.length!==1?"s":""}) \u2192</button>`:`<button class="btn primary" id="skip-quiz">Skip to exam questions \u2192</button>`);
+  if(hasReview)$("start-review").onclick=()=>{state.reviewIndex=0;setPhase("review");renderReview()};
+  else $("skip-quiz").onclick=()=>{startQuiz()};
+  box.scrollIntoView({behavior:"smooth"});
+}
+
+function renderReview(){
+  const el=$("phase-review");
+  const topics=state.reviewTopics;
+  if(!topics.length){el.innerHTML=`<div style="text-align:center;padding:40px"><p style="font-size:18px;font-weight:600">All clear!</p><button class="btn primary" style="margin-top:16px" id="rev-to-quiz">Go to exam questions \u2192</button></div>`;$("rev-to-quiz").onclick=startQuiz;return}
+  const t=topics[state.reviewIndex];
+  const conf=state.ratings[t.id];
+  let dots=`<div class="nav-dots">`;topics.forEach((_,i)=>{dots+=`<button class="dot${i===state.reviewIndex?" active":""}" data-ri="${i}"></button>`});dots+=`</div>`;
+  let points="";t.review.key_points.forEach((p,i)=>{points+=`<div class="key-point"><span class="key-num">${String(i+1).padStart(2,"0")}</span>${p}</div>`});
+  el.innerHTML=dots+`<div class="review-card"><div class="review-meta"><span class="pill" style="background:${conf===0?"var(--red-bg)":"var(--amber-bg)"};color:${conf===0?"var(--red-text)":"var(--amber-text)"};font-size:12px">${conf===0?"Needs review":"Shaky"}</span><span style="font-size:12px;color:var(--text3)">${state.reviewIndex+1} of ${topics.length}</span></div><p class="review-topic">${t.name}</p><p class="review-cat">${t.category}</p><div>${points}</div><div class="review-nav"><button class="btn" id="rev-prev"${state.reviewIndex===0?' disabled style="opacity:.3"':""}>← Previous</button>${state.reviewIndex<topics.length-1?`<button class="btn primary" id="rev-next">Next topic →</button>`:`<button class="btn primary" id="rev-quiz">Start exam quiz →</button>`}</div></div>`;
+  el.querySelectorAll(".dot").forEach(d=>d.onclick=()=>{state.reviewIndex=parseInt(d.dataset.ri);renderReview();window.scrollTo({top:0,behavior:"smooth"})});
+  if($("rev-prev")&&!$("rev-prev").disabled)$("rev-prev").onclick=()=>{state.reviewIndex--;renderReview();window.scrollTo({top:0,behavior:"smooth"})};
+  if($("rev-next"))$("rev-next").onclick=()=>{state.reviewIndex++;renderReview();window.scrollTo({top:0,behavior:"smooth"})};
+  if($("rev-quiz"))$("rev-quiz").onclick=startQuiz;
+}
+
+function startQuiz(){
+  state.quizQuestions=shuffle(QUESTIONS);state.quizAnswers={};state.quizSubmitted=false;state.quizPage=0;state.showExp={};
+  setPhase("quiz");renderQuiz();
+}
+
+function renderQuiz(){
+  const el=$("phase-quiz");
+  const qs=state.quizQuestions;
+  const start=state.quizPage*PER_PAGE;
+  const page=qs.slice(start,start+PER_PAGE);
+  const total=qs.length;
+  const answered=Object.keys(state.quizAnswers).length;
+  const pages=Math.ceil(total/PER_PAGE);
+
+  let html=`<div class="quiz-header"><span style="color:var(--text3)">Questions ${start+1}\u2013${Math.min(start+PER_PAGE,total)} of ${total}</span><span style="color:var(--text2);font-weight:500">${answered}/${total} answered</span></div>`;
+
+  page.forEach((q,idx)=>{
+    const gi=start+idx;
+    const sel=state.quizAnswers[q.id];
+    const sub=state.quizSubmitted;
+    html+=`<div class="quiz-q"><p class="q-label mono">Q${gi+1}</p><p class="q-text">${q.q}</p><div class="options">`;
+    q.options.forEach((opt,oi)=>{
+      let cls="option";
+      if(!sub&&sel===oi)cls+=" selected";
+      if(sub&&sel===oi&&oi===q.answer)cls+=" correct";
+      if(sub&&sel===oi&&oi!==q.answer)cls+=" incorrect";
+      if(sub&&oi===q.answer&&sel!==oi)cls+=" was-correct";
+      html+=`<button class="${cls}" data-qid="${q.id}" data-oi="${oi}"${sub?" disabled":""}><span class="letter">${String.fromCharCode(65+oi)}</span>${opt}</button>`;
+    });
+    html+=`</div>`;
+    if(sub){
+      html+=`<button class="exp-toggle" data-qid="${q.id}">${state.showExp[q.id]?"Hide":"Show"} explanation</button>`;
+      if(state.showExp[q.id])html+=`<div class="exp-box">${q.explanation}</div>`;
+    }
+    html+=`</div>`;
+  });
+
+  html+=`<div class="quiz-nav"><button class="btn" id="quiz-prev"${state.quizPage===0?' disabled style="opacity:.3"':""}>← Previous</button>`;
+  if(state.quizPage<pages-1)html+=`<button class="btn primary" id="quiz-next">Next →</button>`;
+  else if(!state.quizSubmitted)html+=`<button class="btn primary" id="quiz-submit" style="opacity:${answered<total?.5:1}">Submit answers ✓</button>`;
+  else html+=`<button class="btn primary" id="quiz-results">See results →</button>`;
+  html+=`</div>`;
+
+  el.innerHTML=html;
+
+  el.querySelectorAll(".option:not([disabled])").forEach(b=>b.onclick=()=>{
+    state.quizAnswers[parseInt(b.dataset.qid)]=parseInt(b.dataset.oi);renderQuiz();
+  });
+  el.querySelectorAll(".exp-toggle").forEach(b=>b.onclick=()=>{
+    const qid=parseInt(b.dataset.qid);state.showExp[qid]=!state.showExp[qid];renderQuiz();
+  });
+  if($("quiz-prev")&&!$("quiz-prev").disabled)$("quiz-prev").onclick=()=>{state.quizPage--;renderQuiz();window.scrollTo({top:0,behavior:"smooth"})};
+  if($("quiz-next"))$("quiz-next").onclick=()=>{state.quizPage++;renderQuiz();window.scrollTo({top:0,behavior:"smooth"})};
+  if($("quiz-submit"))$("quiz-submit").onclick=()=>{state.quizSubmitted=true;state.quizPage=0;renderQuiz();window.scrollTo({top:0,behavior:"smooth"})};
+  if($("quiz-results"))$("quiz-results").onclick=()=>{setPhase("results");renderResults()};
+}
+
+function renderResults(){
+  const el=$("phase-results");
+  const qs=state.quizQuestions;
+  const correct=qs.filter(q=>state.quizAnswers[q.id]===q.answer).length;
+  const pct=Math.round(correct/qs.length*100);
+  const borderColor=correct>=24?"var(--green)":correct>=18?"var(--amber)":"var(--red)";
+  const label=correct>=27?"Excellent!":correct>=22?"Good work!":correct>=18?"Getting there":"More revision needed";
+
+  let breakdown="";
+  TOPICS.forEach(t=>{
+    const tqs=qs.filter(q=>q.topic===t.id);
+    if(!tqs.length)return;
+    const c=tqs.filter(q=>state.quizAnswers[q.id]===q.answer).length;
+    const p=Math.round(c/tqs.length*100);
+    const col=p===100?"var(--green)":p>=50?"var(--amber)":"var(--red)";
+    breakdown+=`<div class="breakdown-row"><span class="breakdown-name">${t.name}</span><div class="breakdown-bar"><div class="breakdown-fill" style="width:${p}%;background:${col}"></div></div><span class="breakdown-score">${c}/${tqs.length}</span></div>`;
+  });
+
+  el.innerHTML=`<div style="text-align:center"><div class="results-circle" style="border:4px solid ${borderColor}"><span class="results-score">${correct}</span><span class="results-total">/ ${qs.length}</span></div><p class="results-title">${label}</p><p class="results-pct">${pct}% correct</p></div><p class="breakdown-label">Breakdown by topic</p>${breakdown}<div class="results-actions"><button class="btn" id="res-restart">Restart from diagnostic</button><button class="btn primary" id="res-retry">Retry quiz (reshuffled)</button></div>`;
+  $("res-restart").onclick=()=>{state.ratings={};setPhase("diagnostic");renderDiagnostic()};
+  $("res-retry").onclick=startQuiz;
+}
+
+renderDiagnostic();
+</script>
+</body>
+</html>
